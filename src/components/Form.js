@@ -1,7 +1,7 @@
 import React from "react";
 const Form = (props) => {
   const inputTextHandler = (e) => {
-    console.log(e.target.value);
+    //console.log(e.target.value);
     props.setInputText(e.target.value);
   };
 
@@ -22,6 +22,10 @@ const Form = (props) => {
     props.setInputText("");
   };
 
+  const statusHandler = (e) => {
+    props.setStatus(e.target.value);
+  };
+
   return (
     <form className="todo">
       <input
@@ -40,7 +44,7 @@ const Form = (props) => {
       </button>
 
       <div className="todo__select">
-        <select name="todos" className="todo__filter">
+        <select name="todos" className="todo__filter" onChange={statusHandler}>
           <option value="all">All</option>
           <option value="completed">Completed</option>
           <option value="uncompleted">Uncompleted</option>

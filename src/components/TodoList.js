@@ -1,19 +1,21 @@
-import React from "react";
+import TodoItem from "./TodoItem";
 
 const TodoList = (props) => {
   return (
     <div className="todolist-container">
       <ul className="todolist">
-        <div class="todolist__todo">
-          <li class="todolist__todoitem">{props.inputText}</li>
-          <button class="todolist__completebtn">
-            <i class="fa-solid fa-check"></i>
-          </button>
-
-          <button class="todolist__deletebtn">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        </div>
+        {props.filteredTodos.map((todo) => {
+          return (
+            <TodoItem
+              key={todo.id}
+              id={todo.id}
+              completed={todo.completed}
+              text={todo.text}
+              setTodos={props.setTodos}
+              todos={props.todos}
+            />
+          );
+        })}
       </ul>
     </div>
   );
